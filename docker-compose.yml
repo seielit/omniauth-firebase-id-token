@@ -1,0 +1,8 @@
+version: '3'
+services:
+  spec:
+    build: .
+    image: omniauth-google-id-token:latest
+    command: tail -f /dev/null
+    volumes:
+      - .:/src
