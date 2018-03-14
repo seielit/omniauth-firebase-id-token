@@ -25,7 +25,7 @@ describe OmniAuth::Strategies::GoogleIdToken do
   let(:client_id){ 'test_client_id' }
   let(:response_json){ MultiJson.load(last_response.body) }
   let(:args){
-    [nil,
+    [
      {
       cert: cert,
       algorithm: 'RS256',
