@@ -28,7 +28,6 @@ describe OmniAuth::Strategies::GoogleIdToken do
     [
      {
       cert: cert,
-      algorithm: 'RS256',
       aud_claim: aud_claim,
       azp_claim: azp_claim,
       client_id: client_id
@@ -56,19 +55,19 @@ describe OmniAuth::Strategies::GoogleIdToken do
   context 'callback phase' do
     it 'should decode the response' do
       encoded = JWT.encode({name: 'Bob', email: 'bob@example.com', 'iss': 'https://accounts.google.com', aud: aud_claim, azp: azp_claim}, rsa_private, 'RS256')
-      get '/auth/googleidtoken/callback?jwt=' + encoded
+      get '/auth/googleidtoken/callback?id_token=' + encoded
       expect(response_json["info"]["email"]).to eq("bob@example.com")
     end
 
     it 'should not work without required fields' do
       encoded = JWT.encode({name: 'bob'}, 'imasecret')
-      get '/auth/googleidtoken/callback?jwt=' + encoded
+      get '/auth/googleidtoken/callback?id_token=' + encoded
       expect(last_response.status).to eq(302)
     end
 
     it 'should assign the uid' do
       encoded = JWT.encode({name: 'Bob', email: 'bob@example.com', 'iss': 'https://accounts.google.com', aud: aud_claim, azp: azp_claim}, rsa_private, 'RS256')
-      get '/auth/googleidtoken/callback?jwt=' + encoded
+      get '/auth/googleidtoken/callback?id_token=' + encoded
       expect(response_json["uid"]).to eq('bob@example.com')
     end
   end

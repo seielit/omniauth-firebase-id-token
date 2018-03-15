@@ -40,7 +40,7 @@ module OmniAuth
       def decoded
         unless @decoded
           begin
-            @decoded = validator.check(request.params['jwt'], options.aud_claim, options.azp_claim)
+            @decoded = validator.check(request.params['id_token'], options.aud_claim, options.azp_claim)
           rescue StandardError => e
             raise ClaimInvalid.new(e.message)
           end
