@@ -34,12 +34,12 @@ use OmniAuth::Strategies::GoogleIdToken, aud_claim: '123.apps.googleusercontent.
 ```
 
 If this strategy is used primarily for validating a Google ID token, then the only required fields are
-aud_claim and azp_claim. Both are generally the client id for the application in use.
+aud_claim and azp_claim.
 
 If this strategy is also used for redirecting a user to the Google Sign In page before validation,
-then a client_id is also required. This can be the same value as aud_claim and azp_claim. An example of
-the URL can be found at https://developers.google.com/identity/protocols/OAuth2WebServer#handlingresponse
-Sample OAuth 2.0 server response.
+then a client_id is also required. An example of the URL can be found at
+https://developers.google.com/identity/protocols/OAuth2WebServer#handlingresponse Sample OAuth 2.0 server
+response section.
 
 * **cert:** the x509 certificate can be provided to manually define a certificate to validate the tokens.
 * **expiry:** Expiry defines the the time (in seconds) in which the cached Google certificates are valid.
