@@ -18,7 +18,7 @@ module OmniAuth
       option :client_id, nil # Required for request_phase e.g. redirect to auth page
       option :aud_claim, nil
       option :azp_claim, nil
-      option :required_claims, %w(name email)
+      option :required_claims, %w(email)
       option :info_map, {"name" => "name", "email" => "email"}
 
       def request_phase
