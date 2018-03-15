@@ -24,6 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "rack-test"
 
-  spec.add_dependency "omniauth", "~> 1.1"
-  spec.add_dependency "google-id-token", "~> 1.4"
+  spec.add_runtime_dependency "omniauth", "~> 1.1"
+  spec.add_runtime_dependency "google-id-token", "~> 1.4"
 end
