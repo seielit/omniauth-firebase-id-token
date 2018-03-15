@@ -42,6 +42,9 @@ then a client_id is also required. An example of the URL can be found at
 https://developers.google.com/identity/protocols/OAuth2WebServer#handlingresponse Sample OAuth 2.0 server
 response section.
 
+* **name:** The name of the strategy. The default name is `google_id_token` but it can be changed to any value, for
+  example `google`. The OmniAuth URL will thus change to `/auth/google` and the `provider` key in the auth hash will
+  then return `google`.
 * **cert:** the x509 certificate can be provided to manually define a certificate to validate the tokens.
 * **expiry:** Expiry defines the the time (in seconds) in which the cached Google certificates are valid.
 * **uid_claim:** this determines which claim will be used to uniquely identify the user. Defaults

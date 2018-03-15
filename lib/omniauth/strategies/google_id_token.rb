@@ -11,6 +11,7 @@ module OmniAuth
       BASE_SCOPES = %w[profile email openid].freeze
       RESPONSE_TYPES = %w[token id_token].freeze
 
+      option :name, 'google_id_token'
       option :cert, nil
       option :expiry, 3600 # 1 hour
       option :uid_claim, 'email'
