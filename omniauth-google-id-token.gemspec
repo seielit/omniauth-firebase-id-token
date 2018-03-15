@@ -5,7 +5,7 @@ require 'omniauth/google_id_token/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-google-id-token"
-  spec.version       = Omniauth::GoogleIdToken::VERSION
+  spec.version       = OmniAuth::GoogleIdToken::VERSION
   spec.authors       = ["Joshua Morris"]
   spec.email         = ["josh@masteryconnect.com"]
   spec.description   = %q{An OmniAuth strategy to validate Google id tokens.}
