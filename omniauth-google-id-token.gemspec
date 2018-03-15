@@ -18,11 +18,11 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.16"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec"
-  spec.add_development_dependency "guard"
-  spec.add_development_dependency "guard-rspec"
-  spec.add_development_dependency "rack-test"
+  spec.add_development_dependency "rake", "~> 12.3"
+  spec.add_development_dependency "rspec", "~> 3.7"
+  spec.add_development_dependency "guard", "~> 2.14"
+  spec.add_development_dependency "guard-rspec", "~> 4.7"
+  spec.add_development_dependency "rack-test", "~> 0.8"
 
   spec.add_runtime_dependency "omniauth", "~> 1.1"
   spec.add_runtime_dependency "google-id-token", "~> 1.4"
