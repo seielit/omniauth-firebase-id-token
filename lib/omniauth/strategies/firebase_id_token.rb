@@ -94,12 +94,11 @@ module OmniAuth
       end
 
       def decode_claims
-        byebug
         token = request.params['id_token']
         audc = options.aud_claim
         azpc = options.azp_claim
 
-        @decoded = validator.check token,
+        @decoded = validator.check! token,
           audc, azpc
       rescue StandardError => e
         logger.error " ** @slack Invalid token: #{e}"
