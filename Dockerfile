@@ -1,11 +1,11 @@
-FROM ruby:2.3
+FROM ruby:2.6
 
 RUN mkdir -p /src
 WORKDIR /src
 
 COPY Gemfile /src/Gemfile
 COPY Gemfile.lock /src/Gemfile.lock
-COPY omniauth-google-id-token.gemspec /src/omniauth-google-id-token.gemspec
+COPY omniauth-firebase-id-token.gemspec /src/omniauth-firebase-id-token.gemspec
 COPY lib /src/lib
 
 ENV BUNDLE_GEMFILE=/src/Gemfile \
@@ -17,6 +17,7 @@ ENV BUNDLE_GEMFILE=/src/Gemfile \
   BUNDLE_BINSTUBS=/src/vendor/bundle/binstubs \
   PATH=/src/vendor/bundle/bin:$PATH
 
+RUN bundle update --bundler
 RUN bundle install
 
 COPY . .
