@@ -27,12 +27,12 @@ module OmniAuth
       #   The required audience value; must match the token's field
       #
       # @return [Hash] The decoded ID token
-      def check!(token, aud, azp = nil)
+      def check!(token, aud, _azp = nil)
         res = Faraday.get token_url(token)
 
         data = JSON.parse res.body
-        valid = aud == data['aud'] &&
-          azp.blank? || (azp == data['azp'])
+        valid = aud == data['aud']
+        # azp.blank? || (azp == data['azp'])
 
         error = "Signature is invalid! #{res.status} #{res.body}"
         raise SignatureError, error unless res.status == 200 && valid
