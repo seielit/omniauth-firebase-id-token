@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # rubocop:disable Lint/MissingCopEnableDirective
+# rubocop:disable Layout/MultilineOperationIndentation
 
 require 'json'
 require 'faraday'
@@ -26,14 +27,17 @@ module OmniAuth
       #   The required audience value; must match the token's field
       #
       # @return [Hash] The decoded ID token
-      def check!(token, _aud, _cid = nil)
+      def check!(token, aud, azp = nil)
         res = Faraday.get token_url(token)
 
+        data = JSON.parse res.body
+        valid = aud == data['aud'] &&
+          azp.blank? || (azp == data['azp'])
+
         error = "Signature is invalid! #{res.status} #{res.body}"
+        raise SignatureError, error unless res.status == 200 && valid
 
-        raise SignatureError, error unless res.status == 200
-
-        JSON.parse res.body
+        data
       end
 
       def token_url(token)
